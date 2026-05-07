@@ -84,4 +84,27 @@
     <description>System log: tar invoked</description>
   </rule>
 
+  <rule id="100199" level="7">
+    <if_sid>31101</if_sid>
+    <url>/lab1-demo</url>
+    <description>lab1 demo: someone hit /lab1-demo</description>
+  </rule>
+
+  <rule id="100200" level="10">
+    <if_sid>31100</if_sid>
+    <url>etc/passwd|etc/shadow</url>
+    <description>Possible Local File Inclusion attempt</description>
+  </rule>
+
+  <rule id="100201" level="10" frequency="8" timeframe="30">
+    <if_matched_sid>31101</if_matched_sid>
+    <description>Web Reconnaissance: Multiple 404 errors from same IP</description>
+  </rule>
+
+  <rule id="100202" level="0">
+    <if_sid>31101</if_sid>
+    <url>^/status$</url>
+    <description>Suppress 404 for /status health-check path</description>
+  </rule>
+
 </group>
